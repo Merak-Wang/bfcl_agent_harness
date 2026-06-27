@@ -193,7 +193,7 @@ class AgentHarness:
                     index = future_to_index[future]
                     try:
                         records[index] = future.result()
-                    except Exception as exc:  # noqa: BLE001 - 将 API 失败记录为可追踪错误。
+                    except Exception as exc: 
                         example = examples[index]
                         records[index] = PredictionRecord(
                             example=example,
