@@ -52,7 +52,7 @@ def _json_calls_to_objects(raw: str) -> tuple[list[FunctionCall], str | None]:
             return [], "Output is not a JSON array"
         calls = [FunctionCall(name=item["name"], arguments=item["arguments"]) for item in data]
         return calls, None
-    except Exception as exc:  # noqa: BLE001 - demo 解析器应暴露任何解析问题。
+    except Exception as exc: 
         return [], str(exc)
 
 
