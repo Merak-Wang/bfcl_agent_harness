@@ -108,7 +108,7 @@ class AgentHarness:
 
     @staticmethod
     def _skill_diff(before: str, after: str) -> str:
-        """为仪表盘生成可读的 Skill 文本差异。"""
+        """为前端生成可读的 Skill 文本差异。"""
 
         if before == after:
             return ""
