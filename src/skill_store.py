@@ -1,7 +1,6 @@
 """Skill 版本管理。
 
-这是面向小型 demo 的过程化记忆存储，相当于 Hermes 风格的实现。
-Agent 不修改模型权重，而是将可复用经验写入 Skill 文件，
+Agent 将可复用经验写入 Skill 文件，
 并通过版本号管理，以便在更新带来负面影响时回滚。
 """
 
@@ -53,8 +52,7 @@ class SkillStore:
     def append_fewshot(self, item: dict) -> None:
         """将一个已验证的示例追加到 few-shot 记忆中。
 
-        该方法会执行简单的去重检查。若没有这道保护，重复运行 demo 时
-        prompt 会越来越长，却不会带来新信息。
+        该方法会执行简单的去重检查。避免 prompt 越来越长，却不会带来新信息。
         """
 
         existing = self.read_fewshots(limit=10_000)
@@ -84,7 +82,7 @@ class SkillStore:
         return items[-limit:]
 
     def reset(self) -> None:
-        """重置可变的 Skill 记忆，使 demo 可以重复运行。"""
+        """重置可变的 Skill 记忆，使实验可以重复运行。"""
 
         if self.base_skill_path.exists():
             self.skill_path.write_text(self.base_skill_path.read_text(encoding="utf-8"), encoding="utf-8")
