@@ -1,0 +1,1394 @@
+{
+  "iteration": 0,
+  "accepted": true,
+  "current_skill_version": "487327446f",
+  "candidate_skill_version": "64465d3e7d",
+  "metrics_before": {
+    "total": 112,
+    "exact_match_rate": 0.8482,
+    "function_match_rate": 0.9911,
+    "argument_match_rate": 0.8482,
+    "order_match_rate": 0.9911,
+    "json_valid_rate": 1.0,
+    "error_distribution": {
+      "argument_mismatch": 17,
+      "call_count_mismatch": 1,
+      "function_mismatch": 1,
+      "order_mismatch": 1
+    },
+    "total_latency_seconds": 312.0514,
+    "avg_latency_seconds": 2.7862,
+    "total_prompt_chars": 364297,
+    "avg_prompt_chars": 3252.65,
+    "total_raw_output_chars": 14573,
+    "avg_raw_output_chars": 130.12
+  },
+  "metrics_after": {
+    "total": 48,
+    "exact_match_rate": 0.8542,
+    "function_match_rate": 1.0,
+    "argument_match_rate": 0.8542,
+    "order_match_rate": 1.0,
+    "json_valid_rate": 1.0,
+    "error_distribution": {
+      "argument_mismatch": 7
+    },
+    "total_latency_seconds": 154.907,
+    "avg_latency_seconds": 3.2272,
+    "total_prompt_chars": 377673,
+    "avg_prompt_chars": 7868.19,
+    "total_raw_output_chars": 6161,
+    "avg_raw_output_chars": 128.35
+  },
+  "bad_cases": [
+    {
+      "id": "simple_14",
+      "user_query": "Calculate the derivative of the function 3x^2 + 2x - 1.",
+      "tags": [
+        "simple",
+        "official_bfcl_v3"
+      ],
+      "gold_calls": [
+        {
+          "name": "calculate_derivative",
+          "arguments": {
+            "function": [
+              "3x**2 + 2x - 1",
+              "lambda x: 3x**2 + 2x - 1"
+            ],
+            "x_value": [
+              "",
+              0.0
+            ]
+          }
+        }
+      ],
+      "predicted_calls": [
+        {
+          "name": "calculate_derivative",
+          "arguments": {
+            "function": "3*x**2 + 2*x - 1"
+          }
+        }
+      ],
+      "raw_output": "[\n  {\n    \"name\": \"calculate_derivative\",\n    \"arguments\": {\n      \"function\": \"3*x**2 + 2*x - 1\"\n    }\n  }\n]",
+      "error_types": [
+        "argument_mismatch"
+      ],
+      "parse_error": null
+    },
+    {
+      "id": "simple_16",
+      "user_query": "Calculate the derivative of the function 2x^2 at x = 1.",
+      "tags": [
+        "simple",
+        "official_bfcl_v3"
+      ],
+      "gold_calls": [
+        {
+          "name": "calculus.derivative",
+          "arguments": {
+            "function": [
+              "2x**2",
+              "lambda x: 2x**2"
+            ],
+            "value": [
+              1
+            ],
+            "function_variable": [
+              "x",
+              ""
+            ]
+          }
+        }
+      ],
+      "predicted_calls": [
+        {
+          "name": "calculus.derivative",
+          "arguments": {
+            "function": "2*x**2",
+            "value": 1,
+            "function_variable": "x"
+          }
+        }
+      ],
+      "raw_output": "[\n  {\n    \"name\": \"calculus.derivative\",\n    \"arguments\": {\n      \"function\": \"2*x**2\",\n      \"value\": 1,\n      \"function_variable\": \"x\"\n    }\n  }\n]",
+      "error_types": [
+        "argument_mismatch"
+      ],
+      "parse_error": null
+    },
+    {
+      "id": "simple_45",
+      "user_query": "Calculate the energy (in Joules) absorbed or released during the phase change of 100g of water from liquid to steam at its boiling point.",
+      "tags": [
+        "simple",
+        "official_bfcl_v3"
+      ],
+      "gold_calls": [
+        {
+          "name": "thermo.calculate_energy",
+          "arguments": {
+            "mass": [
+              100
+            ],
+            "phase_transition": [
+              "vaporization"
+            ],
+            "substance": [
+              "water",
+              ""
+            ]
+          }
+        }
+      ],
+      "predicted_calls": [
+        {
+          "name": "thermo.calculate_energy",
+          "arguments": {
+            "mass": "100g",
+            "phase_transition": "vaporization",
+            "substance": "water"
+          }
+        }
+      ],
+      "raw_output": "[\n  {\n    \"name\": \"thermo.calculate_energy\",\n    \"arguments\": {\n      \"mass\": \"100g\",\n      \"phase_transition\": \"vaporization\",\n      \"substance\": \"water\"\n    }\n  }\n]",
+      "error_types": [
+        "argument_mismatch"
+      ],
+      "parse_error": null
+    },
+    {
+      "id": "simple_55",
+      "user_query": "Find me detailed information about the structure of human cell",
+      "tags": [
+        "simple",
+        "official_bfcl_v3"
+      ],
+      "gold_calls": [
+        {
+          "name": "biology.get_cell_info",
+          "arguments": {
+            "cell_type": [
+              "human"
+            ],
+            "detailed": [
+              true
+            ]
+          }
+        }
+      ],
+      "predicted_calls": [
+        {
+          "name": "biology.get_cell_info",
+          "arguments": {
+            "cell_type": "human cell",
+            "detailed": true
+          }
+        }
+      ],
+      "raw_output": "[\n  {\n    \"name\": \"biology.get_cell_info\",\n    \"arguments\": {\n      \"cell_type\": \"human cell\",\n      \"detailed\": true\n    }\n  }\n]",
+      "error_types": [
+        "argument_mismatch"
+      ],
+      "parse_error": null
+    },
+    {
+      "id": "simple_58",
+      "user_query": "What is the function of ATP synthase in mitochondria?",
+      "tags": [
+        "simple",
+        "official_bfcl_v3"
+      ],
+      "gold_calls": [
+        {
+          "name": "cell_biology.function_lookup",
+          "arguments": {
+            "molecule": [
+              "ATP synthase"
+            ],
+            "organelle": [
+              "mitochondria"
+            ],
+            "specific_function": [
+              true
+            ]
+          }
+        }
+      ],
+      "predicted_calls": [
+        {
+          "name": "cell_biology.function_lookup",
+          "arguments": {
+            "molecule": "ATP synthase",
+            "organelle": "mitochondria"
+          }
+        }
+      ],
+      "raw_output": "[\n  {\n    \"name\": \"cell_biology.function_lookup\",\n    \"arguments\": {\n      \"molecule\": \"ATP synthase\",\n      \"organelle\": \"mitochondria\"\n    }\n  }\n]",
+      "error_types": [
+        "argument_mismatch"
+      ],
+      "parse_error": null
+    },
+    {
+      "id": "simple_61",
+      "user_query": "Predict whether a person with weight 150lbs and height 5ft 10in who is lightly active will get type 2 diabetes.",
+      "tags": [
+        "simple",
+        "official_bfcl_v3"
+      ],
+      "gold_calls": [
+        {
+          "name": "diabetes_prediction",
+          "arguments": {
+            "weight": [
+              150
+            ],
+            "height": [
+              70
+            ],
+            "activity_level": [
+              "lightly active"
+            ]
+          }
+        }
+      ],
+      "predicted_calls": [
+        {
+          "name": "diabetes_prediction",
+          "arguments": {
+            "weight": "150",
+            "height": "70",
+            "activity_level": "lightly active"
+          }
+        }
+      ],
+      "raw_output": "[\n  {\n    \"name\": \"diabetes_prediction\",\n    \"arguments\": {\n      \"weight\": \"150\",\n      \"height\": \"70\",\n      \"activity_level\": \"lightly active\"\n    }\n  }\n]",
+      "error_types": [
+        "argument_mismatch"
+      ],
+      "parse_error": null
+    },
+    {
+      "id": "simple_65",
+      "user_query": "Calculate the Population Density for Brazil in 2022 if the population is 213 million and the land area is 8.5 million square kilometers.",
+      "tags": [
+        "simple",
+        "official_bfcl_v3"
+      ],
+      "gold_calls": [
+        {
+          "name": "calculate_density",
+          "arguments": {
+            "country": [
+              "Brazil"
+            ],
+            "year": [
+              "2022"
+            ],
+            "population": [
+              213000000
+            ],
+            "land_area": [
+              8500000
+            ]
+          }
+        }
+      ],
+      "predicted_calls": [
+        {
+          "name": "calculate_density",
+          "arguments": {
+            "country": "Brazil",
+            "year": 2022,
+            "population": 213000000,
+            "land_area": 8500000
+          }
+        }
+      ],
+      "raw_output": "[\n  {\n    \"name\": \"calculate_density\",\n    \"arguments\": {\n      \"country\": \"Brazil\",\n      \"year\": 2022,\n      \"population\": 213000000,\n      \"land_area\": 8500000\n    }\n  }\n]",
+      "error_types": [
+        "argument_mismatch"
+      ],
+      "parse_error": null
+    },
+    {
+      "id": "simple_66",
+      "user_query": "Get me data on average precipitation in the Amazon rainforest for the last six months.",
+      "tags": [
+        "simple",
+        "official_bfcl_v3"
+      ],
+      "gold_calls": [
+        {
+          "name": "ecology_data.precipitation_stats",
+          "arguments": {
+            "location": [
+              "Amazon rainforest"
+            ],
+            "time_frame": [
+              "six_months"
+            ]
+          }
+        }
+      ],
+      "predicted_calls": [
+        {
+          "name": "ecology_data.precipitation_stats",
+          "arguments": {
+            "location": "Amazon rainforest",
+            "time_frame": "last six months"
+          }
+        }
+      ],
+      "raw_output": "[\n  {\n    \"name\": \"ecology_data.precipitation_stats\",\n    \"arguments\": {\n      \"location\": \"Amazon rainforest\",\n      \"time_frame\": \"last six months\"\n    }\n  }\n]",
+      "error_types": [
+        "argument_mismatch"
+      ],
+      "parse_error": null
+    },
+    {
+      "id": "simple_69",
+      "user_query": "Find out the population and species of turtles in Mississippi river in 2020.",
+      "tags": [
+        "simple",
+        "official_bfcl_v3"
+      ],
+      "gold_calls": [
+        {
+          "name": "ecology.get_turtle_population",
+          "arguments": {
+            "location": [
+              "Mississippi river"
+            ],
+            "year": [
+              2020
+            ],
+            "species": [
+              true
+            ]
+          }
+        }
+      ],
+      "predicted_calls": [
+        {
+          "name": "ecology.get_turtle_population",
+          "arguments": {
+            "location": "Mississippi river",
+            "year": "2020",
+            "species": true
+          }
+        }
+      ],
+      "raw_output": "[\n  {\n    \"name\": \"ecology.get_turtle_population\",\n    \"arguments\": {\n      \"location\": \"Mississippi river\",\n      \"year\": \"2020\",\n      \"species\": true\n    }\n  }\n]",
+      "error_types": [
+        "argument_mismatch"
+      ],
+      "parse_error": null
+    },
+    {
+      "id": "simple_71",
+      "user_query": "Generate a DNA sequence with 100 bases including more G (Guanine) and C (Cytosine).",
+      "tags": [
+        "simple",
+        "official_bfcl_v3"
+      ],
+      "gold_calls": [
+        {
+          "name": "generate_DNA_sequence",
+          "arguments": {
+            "length": [
+              100
+            ],
+            "preferences": [
+              [
+                "G",
+                "C"
+              ],
+              [
+                "C",
+                "G"
+              ]
+            ]
+          }
+        }
+      ],
+      "predicted_calls": [
+        {
+          "name": "generate_DNA_sequence",
+          "arguments": {
+            "length": 100,
+            "preferences": "GC"
+          }
+        }
+      ],
+      "raw_output": "[{\"name\": \"generate_DNA_sequence\", \"arguments\": {\"length\": 100, \"preferences\": \"GC\"}}]",
+      "error_types": [
+        "argument_mismatch"
+      ],
+      "parse_error": null
+    },
+    {
+      "id": "simple_77",
+      "user_query": "Find a nearby restaurant that serves vegan food in Los Angeles.",
+      "tags": [
+        "simple",
+        "official_bfcl_v3"
+      ],
+      "gold_calls": [
+        {
+          "name": "restaurant.find_nearby",
+          "arguments": {
+            "location": [
+              "Los Angeles, CA"
+            ],
+            "dietary_preference": [
+              [
+                "Vegan"
+              ]
+            ]
+          }
+        }
+      ],
+      "predicted_calls": [
+        {
+          "name": "restaurant.find_nearby",
+          "arguments": {
+            "location": "Los Angeles, CA",
+            "dietary_preference": "vegan"
+          }
+        }
+      ],
+      "raw_output": "[\n  {\n    \"name\": \"restaurant.find_nearby\",\n    \"arguments\": {\n      \"location\": \"Los Angeles, CA\",\n      \"dietary_preference\": \"vegan\"\n    }\n  }\n]",
+      "error_types": [
+        "argument_mismatch"
+      ],
+      "parse_error": null
+    },
+    {
+      "id": "multiple_7",
+      "user_query": "How to assess the population growth in deer and their impact on woodland in Washington state over the past decade?",
+      "tags": [
+        "multiple",
+        "official_bfcl_v3"
+      ],
+      "gold_calls": [
+        {
+          "name": "wildlife_population.assess_growth",
+          "arguments": {
+            "species": [
+              "deer",
+              "Deer"
+            ],
+            "location": [
+              "Washington state",
+              "WA",
+              "Washington"
+            ],
+            "duration": [
+              10
+            ]
+          }
+        }
+      ],
+      "predicted_calls": [
+        {
+          "name": "wildlife_population.assess_growth",
+          "arguments": {
+            "species": "deer",
+            "location": "Washington state",
+            "duration": 10
+          }
+        },
+        {
+          "name": "ecological_impact.analyze",
+          "arguments": {
+            "species": "deer",
+            "ecosystem": "woodland",
+            "location": "Washington state",
+            "timeframe": 10
+          }
+        }
+      ],
+      "raw_output": "[\n  {\n    \"name\": \"wildlife_population.assess_growth\",\n    \"arguments\": {\n      \"species\": \"deer\",\n      \"location\": \"Washington state\",\n      \"duration\": 10\n    }\n  },\n  {\n    \"name\": \"ecological_impact.analyze\",\n    \"arguments\": {\n      \"species\": \"deer\",\n      \"ecosystem\": \"woodland\",\n      \"location\": \"Washington state\",\n      \"timeframe\": 10\n    }\n  }\n]",
+      "error_types": [
+        "call_count_mismatch",
+        "function_mismatch",
+        "argument_mismatch",
+        "order_mismatch"
+      ],
+      "parse_error": null
+    },
+    {
+      "id": "multiple_8",
+      "user_query": "Find a 3 bedroom villa for sale within $300,000 to $400,000 budget in San Diego.",
+      "tags": [
+        "multiple",
+        "official_bfcl_v3"
+      ],
+      "gold_calls": [
+        {
+          "name": "realestate.find_properties",
+          "arguments": {
+            "location": [
+              "SD",
+              "San Diego",
+              "San Diego, CA",
+              "CA"
+            ],
+            "propertyType": [
+              "villa"
+            ],
+            "bedrooms": [
+              3
+            ],
+            "budget": [
+              {
+                "min": [
+                  300000
+                ],
+                "max": [
+                  400000
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "predicted_calls": [
+        {
+          "name": "realestate.find_properties",
+          "arguments": {
+            "location": "San Diego, CA",
+            "propertyType": "villa",
+            "bedrooms": 3,
+            "budget": "$300,000 to $400,000"
+          }
+        }
+      ],
+      "raw_output": "[\n  {\n    \"name\": \"realestate.find_properties\",\n    \"arguments\": {\n      \"location\": \"San Diego, CA\",\n      \"propertyType\": \"villa\",\n      \"bedrooms\": 3,\n      \"budget\": \"$300,000 to $400,000\"\n    }\n  }\n]",
+      "error_types": [
+        "argument_mismatch"
+      ],
+      "parse_error": null
+    },
+    {
+      "id": "multiple_9",
+      "user_query": "Calculate the average grade for student John who has these scores {'math':90, 'science':75, 'history':82, 'music':89} across different subjects.",
+      "tags": [
+        "multiple",
+        "official_bfcl_v3"
+      ],
+      "gold_calls": [
+        {
+          "name": "calculate_average",
+          "arguments": {
+            "gradeDict": [
+              {
+                "math": [
+                  90
+                ],
+                "science": [
+                  75
+                ],
+                "history": [
+                  82
+                ],
+                "music": [
+                  89
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "predicted_calls": [
+        {
+          "name": "calculate_average",
+          "arguments": {
+            "gradeDict": {
+              "math": 90,
+              "science": 75,
+              "history": 82,
+              "music": 89
+            }
+          }
+        }
+      ],
+      "raw_output": "[\n  {\n    \"name\": \"calculate_average\",\n    \"arguments\": {\n      \"gradeDict\": {\"math\": 90, \"science\": 75, \"history\": 82, \"music\": 89}\n    }\n  }\n]",
+      "error_types": [
+        "argument_mismatch"
+      ],
+      "parse_error": null
+    },
+    {
+      "id": "multiple_13",
+      "user_query": "How much revenue would company XYZ generate if we increase the sales units of product A by 10% while keeping the price the same?",
+      "tags": [
+        "multiple",
+        "official_bfcl_v3"
+      ],
+      "gold_calls": [
+        {
+          "name": "corporate_finance.revenue_forecast",
+          "arguments": {
+            "company": [
+              "XYZ"
+            ],
+            "product": [
+              "A",
+              "Product A"
+            ],
+            "sales_units_increase_percentage": [
+              10
+            ]
+          }
+        }
+      ],
+      "predicted_calls": [
+        {
+          "name": "corporate_finance.revenue_forecast",
+          "arguments": {
+            "company": "XYZ",
+            "product": "product A",
+            "sales_units_increase_percentage": 10
+          }
+        }
+      ],
+      "raw_output": "[{\"name\": \"corporate_finance.revenue_forecast\", \"arguments\": {\"company\": \"XYZ\", \"product\": \"product A\", \"sales_units_increase_percentage\": 10}}]",
+      "error_types": [
+        "argument_mismatch"
+      ],
+      "parse_error": null
+    },
+    {
+      "id": "multiple_20",
+      "user_query": "What is the price to commission a sculpture made of marble with a size of 3 feet?",
+      "tags": [
+        "multiple",
+        "official_bfcl_v3"
+      ],
+      "gold_calls": [
+        {
+          "name": "sculpture_price.calculate",
+          "arguments": {
+            "material": [
+              "marble"
+            ],
+            "size": [
+              3
+            ],
+            "complexity": [
+              "medium",
+              ""
+            ]
+          }
+        }
+      ],
+      "predicted_calls": [
+        {
+          "name": "sculpture_price.calculate",
+          "arguments": {
+            "material": "marble",
+            "size": "3 feet"
+          }
+        }
+      ],
+      "raw_output": "[\n  {\n    \"name\": \"sculpture_price.calculate\",\n    \"arguments\": {\n      \"material\": \"marble\",\n      \"size\": \"3 feet\"\n    }\n  }\n]",
+      "error_types": [
+        "argument_mismatch"
+      ],
+      "parse_error": null
+    },
+    {
+      "id": "multiple_29",
+      "user_query": "Find the intersection points of the functions y=3x+2 and y=2x+3.",
+      "tags": [
+        "multiple",
+        "official_bfcl_v3"
+      ],
+      "gold_calls": [
+        {
+          "name": "functions.intersect",
+          "arguments": {
+            "function1": [
+              "3x + 2",
+              "lambda x: 3x + 2"
+            ],
+            "function2": [
+              "2x + 3",
+              "lambda x: 2x + 3"
+            ]
+          }
+        }
+      ],
+      "predicted_calls": [
+        {
+          "name": "functions.intersect",
+          "arguments": {
+            "function1": "3x+2",
+            "function2": "2x+3"
+          }
+        }
+      ],
+      "raw_output": "[\n  {\n    \"name\": \"functions.intersect\",\n    \"arguments\": {\n      \"function1\": \"3x+2\",\n      \"function2\": \"2x+3\"\n    }\n  }\n]",
+      "error_types": [
+        "argument_mismatch"
+      ],
+      "parse_error": null
+    }
+  ],
+  "diagnoses": [
+    {
+      "case_id": "type_mismatch_group",
+      "failure_type": "argument_type_mismatch",
+      "root_cause": "Model provided a string with units or quotes when a number was expected, or a number when a string was expected, violating the schema data type.",
+      "skill_patch_type": "llm_reusable_rule",
+      "fix": "Always supply arguments as the exact JSON type specified: unquoted numbers for numeric fields, quoted strings for string fields, without extra text.",
+      "reusable_rule": "Strictly respect the JSON data type of each argument as defined in the function schema. If the schema expects a string, provide a quoted string (e.g., '2022'); if it expects a number, provide an unquoted number (e.g., 2022). Do not add extra characters like units or commas.",
+      "scope": {
+        "task_family": "bfcl",
+        "applies_to": "json_type"
+      },
+      "source": "llm_reflector"
+    },
+    {
+      "case_id": "structure_error_group",
+      "failure_type": "argument_format_error",
+      "root_cause": "Model passed a flat string when an array or object structure was required, e.g., 'GC' instead of [['G','C'],['C','G']].",
+      "skill_patch_type": "llm_reusable_rule",
+      "fix": "Construct array and object arguments exactly as described in the tool schema, preserving nesting and brackets.",
+      "reusable_rule": "For arguments that are arrays or objects, use the exact JSON structure described in the parameter schema (e.g., a list of strings, an object with specific keys). Do not flatten them into a single string.",
+      "scope": {
+        "task_family": "bfcl",
+        "applies_to": "format"
+      },
+      "source": "llm_reflector"
+    },
+    {
+      "case_id": "string_accuracy_group",
+      "failure_type": "argument_value_mismatch",
+      "root_cause": "Model used a paraphrased or slightly modified version of an expected string value, e.g., 'last six months' instead of 'six_months'.",
+      "skill_patch_type": "llm_reusable_rule",
+      "fix": "Use the exact string values given in the function definition, including case and wording.",
+      "reusable_rule": "When a function parameter has a set of predefined string values, use the exact value given in the tool documentation, including case and phrasing (e.g., 'six_months', not 'last six months').",
+      "scope": {
+        "task_family": "bfcl",
+        "applies_to": "argument_name"
+      },
+      "source": "llm_reflector"
+    },
+    {
+      "case_id": "extra_call_group",
+      "failure_type": "call_count_mismatch",
+      "root_cause": "Model split the user query into two function calls when one function could handle both aspects (e.g., deer growth and impact in separate calls).",
+      "skill_patch_type": "llm_reusable_rule",
+      "fix": "Use the minimal number of function calls that satisfy the query; avoid calling additional functions unless explicitly needed.",
+      "reusable_rule": "Only call a function if the user query directly requires it. Do not split a single task into multiple function calls unless the task explicitly asks for separate actions.",
+      "scope": {
+        "task_family": "bfcl",
+        "applies_to": "format"
+      },
+      "source": "llm_reflector"
+    },
+    {
+      "case_id": "missing_boolean_detail",
+      "failure_type": "missing_argument",
+      "root_cause": "Model omitted a boolean argument (e.g., 'specific_function') that was implied by the user's request for detailed information.",
+      "skill_patch_type": "add_fewshot",
+      "fix": "Add fewshot example showing that when a user asks for specific or detailed info, include the corresponding boolean parameter set to true.",
+      "reusable_rule": "If a function exposes a boolean parameter named something like 'detailed' or 'specific_function', set it to true when the user's request implies they want specific or detailed information.",
+      "scope": {
+        "task_family": "bfcl",
+        "applies_to": "argument_name"
+      },
+      "source": "llm_reflector"
+    },
+    {
+      "case_id": "expression_syntax_error",
+      "failure_type": "argument_value_mismatch",
+      "root_cause": "Model used '*' for multiplication in mathematical expression strings where the tool expects '**' for exponentiation (e.g., '3*x**2' vs '3x**2').",
+      "skill_patch_type": "add_fewshot",
+      "fix": "Add fewshot example for derivative function: use '**' for exponent and omit '*' for implicit multiplication.",
+      "reusable_rule": "For mathematical expression arguments, use '**' for exponentiation and avoid adding '*'. Follow the exact syntax implied by the tool (e.g., '3x**2' without multiplication asterisks).",
+      "scope": {
+        "task_family": "bfcl",
+        "applies_to": "function"
+      },
+      "source": "llm_reflector"
+    },
+    {
+      "case_id": "simple_14",
+      "failure_type": "bfcl_argument_error",
+      "root_cause": "The model selected the right function family but missed BFCL-style argument extraction details.",
+      "skill_patch_type": "bfcl_argument_precision",
+      "fix": "Extract arguments from the user query exactly and omit optional arguments when not explicitly provided."
+    },
+    {
+      "case_id": "simple_16",
+      "failure_type": "bfcl_argument_error",
+      "root_cause": "The model selected the right function family but missed BFCL-style argument extraction details.",
+      "skill_patch_type": "bfcl_argument_precision",
+      "fix": "Extract arguments from the user query exactly and omit optional arguments when not explicitly provided."
+    },
+    {
+      "case_id": "simple_45",
+      "failure_type": "bfcl_argument_error",
+      "root_cause": "The model selected the right function family but missed BFCL-style argument extraction details.",
+      "skill_patch_type": "bfcl_argument_precision",
+      "fix": "Extract arguments from the user query exactly and omit optional arguments when not explicitly provided."
+    },
+    {
+      "case_id": "simple_55",
+      "failure_type": "bfcl_argument_error",
+      "root_cause": "The model selected the right function family but missed BFCL-style argument extraction details.",
+      "skill_patch_type": "bfcl_argument_precision",
+      "fix": "Extract arguments from the user query exactly and omit optional arguments when not explicitly provided."
+    },
+    {
+      "case_id": "simple_58",
+      "failure_type": "bfcl_argument_error",
+      "root_cause": "The model selected the right function family but missed BFCL-style argument extraction details.",
+      "skill_patch_type": "bfcl_argument_precision",
+      "fix": "Extract arguments from the user query exactly and omit optional arguments when not explicitly provided."
+    },
+    {
+      "case_id": "simple_61",
+      "failure_type": "bfcl_argument_error",
+      "root_cause": "The model selected the right function family but missed BFCL-style argument extraction details.",
+      "skill_patch_type": "bfcl_argument_precision",
+      "fix": "Extract arguments from the user query exactly and omit optional arguments when not explicitly provided."
+    },
+    {
+      "case_id": "simple_65",
+      "failure_type": "bfcl_argument_error",
+      "root_cause": "The model selected the right function family but missed BFCL-style argument extraction details.",
+      "skill_patch_type": "bfcl_argument_precision",
+      "fix": "Extract arguments from the user query exactly and omit optional arguments when not explicitly provided."
+    },
+    {
+      "case_id": "simple_66",
+      "failure_type": "bfcl_argument_error",
+      "root_cause": "The model selected the right function family but missed BFCL-style argument extraction details.",
+      "skill_patch_type": "bfcl_argument_precision",
+      "fix": "Extract arguments from the user query exactly and omit optional arguments when not explicitly provided."
+    },
+    {
+      "case_id": "simple_69",
+      "failure_type": "bfcl_argument_error",
+      "root_cause": "The model selected the right function family but missed BFCL-style argument extraction details.",
+      "skill_patch_type": "bfcl_argument_precision",
+      "fix": "Extract arguments from the user query exactly and omit optional arguments when not explicitly provided."
+    },
+    {
+      "case_id": "simple_71",
+      "failure_type": "bfcl_argument_error",
+      "root_cause": "The model selected the right function family but missed BFCL-style argument extraction details.",
+      "skill_patch_type": "bfcl_argument_precision",
+      "fix": "Extract arguments from the user query exactly and omit optional arguments when not explicitly provided."
+    },
+    {
+      "case_id": "simple_77",
+      "failure_type": "bfcl_argument_error",
+      "root_cause": "The model selected the right function family but missed BFCL-style argument extraction details.",
+      "skill_patch_type": "bfcl_argument_precision",
+      "fix": "Extract arguments from the user query exactly and omit optional arguments when not explicitly provided."
+    },
+    {
+      "case_id": "multiple_7",
+      "failure_type": "bfcl_tool_selection_error",
+      "root_cause": "The model selected a wrong or unavailable function name in an official BFCL task.",
+      "skill_patch_type": "bfcl_exact_tool_name",
+      "fix": "Use the function name exactly as listed in the provided tools and choose by description, not by memory."
+    },
+    {
+      "case_id": "multiple_8",
+      "failure_type": "bfcl_argument_error",
+      "root_cause": "The model selected the right function family but missed BFCL-style argument extraction details.",
+      "skill_patch_type": "bfcl_argument_precision",
+      "fix": "Extract arguments from the user query exactly and omit optional arguments when not explicitly provided."
+    },
+    {
+      "case_id": "multiple_9",
+      "failure_type": "bfcl_argument_error",
+      "root_cause": "The model selected the right function family but missed BFCL-style argument extraction details.",
+      "skill_patch_type": "bfcl_argument_precision",
+      "fix": "Extract arguments from the user query exactly and omit optional arguments when not explicitly provided."
+    },
+    {
+      "case_id": "multiple_13",
+      "failure_type": "bfcl_argument_error",
+      "root_cause": "The model selected the right function family but missed BFCL-style argument extraction details.",
+      "skill_patch_type": "bfcl_argument_precision",
+      "fix": "Extract arguments from the user query exactly and omit optional arguments when not explicitly provided."
+    },
+    {
+      "case_id": "multiple_20",
+      "failure_type": "bfcl_argument_error",
+      "root_cause": "The model selected the right function family but missed BFCL-style argument extraction details.",
+      "skill_patch_type": "bfcl_argument_precision",
+      "fix": "Extract arguments from the user query exactly and omit optional arguments when not explicitly provided."
+    },
+    {
+      "case_id": "multiple_29",
+      "failure_type": "bfcl_argument_error",
+      "root_cause": "The model selected the right function family but missed BFCL-style argument extraction details.",
+      "skill_patch_type": "bfcl_argument_precision",
+      "fix": "Extract arguments from the user query exactly and omit optional arguments when not explicitly provided."
+    }
+  ],
+  "gate_reason": "Accepted: regression exact_match 0.8125 -> 0.8542 (delta=0.0417, improved=3, regressed=1).",
+  "gate_details": {
+    "min_improvement": 0.001,
+    "max_regression_drop": 0.05,
+    "new_rules": [
+      "[bfcl_numeric_json_types] When the schema or accepted answers imply a numeric argument, output a JSON number instead of a quoted string with units or symbols. Scope: {'argument_name': 'mass', 'applies_to': 'json_type'}. Support: 4. Evidence: multiple_20, simple_45, simple_61, simple_69.",
+      "[bfcl_schema_argument_names] Use only argument names from the selected tool schema. Do not rename parameters or add schema-unknown keys. Scope: {'task_family': 'bfcl', 'applies_to': 'argument_names'}. Support: 3. Evidence: multiple_20, simple_14, simple_58.",
+      "[bfcl_exact_tool_name] Use one of the tool names exactly as provided in Available tools; never invent or rename a tool. Scope: {'task_family': 'bfcl', 'applies_to': 'tool_name'}. Support: 1. Evidence: multiple_7.",
+      "[llm_reflector_rule] Strictly respect the JSON data type of each argument as defined in the function schema. If the schema expects a string, provide a quoted string (e.g., '2022'); if it expects a number, provide an unquoted number (e.g., 2022). Do not add extra characters like units or commas. Scope: {'task_family': 'bfcl', 'applies_to': 'json_type'}. Rationale: Model provided a string with units or quotes when a number was expected, or a number when a string was expected, violating the schema data type.",
+      "[llm_reflector_rule] For arguments that are arrays or objects, use the exact JSON structure described in the parameter schema (e.g., a list of strings, an object with specific keys). Do not flatten them into a single string. Scope: {'task_family': 'bfcl', 'applies_to': 'format'}. Rationale: Model passed a flat string when an array or object structure was required, e.g., 'GC' instead of [['G','C'],['C','G']]."
+    ],
+    "scoped_rules": [
+      {
+        "rule_id": "bfcl_numeric_json_types",
+        "scope": {
+          "argument_name": "mass",
+          "applies_to": "json_type"
+        },
+        "rule": "When the schema or accepted answers imply a numeric argument, output a JSON number instead of a quoted string with units or symbols.",
+        "support_count": 4,
+        "evidence_case_ids": [
+          "multiple_20",
+          "simple_45",
+          "simple_61",
+          "simple_69"
+        ]
+      },
+      {
+        "rule_id": "bfcl_schema_argument_names",
+        "scope": {
+          "task_family": "bfcl",
+          "applies_to": "argument_names"
+        },
+        "rule": "Use only argument names from the selected tool schema. Do not rename parameters or add schema-unknown keys.",
+        "support_count": 3,
+        "evidence_case_ids": [
+          "multiple_20",
+          "simple_14",
+          "simple_58"
+        ]
+      },
+      {
+        "rule_id": "bfcl_exact_tool_name",
+        "scope": {
+          "task_family": "bfcl",
+          "applies_to": "tool_name"
+        },
+        "rule": "Use one of the tool names exactly as provided in Available tools; never invent or rename a tool.",
+        "support_count": 1,
+        "evidence_case_ids": [
+          "multiple_7"
+        ]
+      }
+    ],
+    "candidate_fewshot_count": 6,
+    "optimize_trace": "E:\\ai_project\\bfcl_agent_harness_demo_llm_reflector_dashboard\\bfcl_agent_harness_demo\\runs\\latest\\traces\\iteration_00_optimize_eval.json",
+    "experience_path": "E:\\ai_project\\bfcl_agent_harness_demo_llm_reflector_dashboard\\bfcl_agent_harness_demo\\runs\\latest\\experience\\iteration_00_experience.json",
+    "diagnosis_distribution": {
+      "llm_reusable_rule": 4,
+      "add_fewshot": 2,
+      "bfcl_argument_precision": 16,
+      "bfcl_exact_tool_name": 1
+    },
+    "bad_case_count": 17,
+    "success_case_count": 8,
+    "candidate_skill_diff": "--- SKILL_before.md\n+++ SKILL_candidate.md\n@@ -39,3 +39,10 @@\n ## Known Fixes\n \n This section is intentionally short at initialization. The Harness may append verified fixes here after evaluating Bad Cases.\n+\n+### Auto-Evolution Patch (2026-06-26 07:08:05 UTC)\n+- [bfcl_numeric_json_types] When the schema or accepted answers imply a numeric argument, output a JSON number instead of a quoted string with units or symbols. Scope: {'argument_name': 'mass', 'applies_to': 'json_type'}. Support: 4. Evidence: multiple_20, simple_45, simple_61, simple_69.\n+- [bfcl_schema_argument_names] Use only argument names from the selected tool schema. Do not rename parameters or add schema-unknown keys. Scope: {'task_family': 'bfcl', 'applies_to': 'argument_names'}. Support: 3. Evidence: multiple_20, simple_14, simple_58.\n+- [bfcl_exact_tool_name] Use one of the tool names exactly as provided in Available tools; never invent or rename a tool. Scope: {'task_family': 'bfcl', 'applies_to': 'tool_name'}. Support: 1. Evidence: multiple_7.\n+- [llm_reflector_rule] Strictly respect the JSON data type of each argument as defined in the function schema. If the schema expects a string, provide a quoted string (e.g., '2022'); if it expects a number, provide an unquoted number (e.g., 2022). Do not add extra characters like units or commas. Scope: {'task_family': 'bfcl', 'applies_to': 'json_type'}. Rationale: Model provided a string with units or quotes when a number was expected, or a number when a string was expected, violating the schema data type.\n+- [llm_reflector_rule] For arguments that are arrays or objects, use the exact JSON structure described in the parameter schema (e.g., a list of strings, an object with specific keys). Do not flatten them into a single string. Scope: {'task_family': 'bfcl', 'applies_to': 'format'}. Rationale: Model passed a flat string when an array or object structure was required, e.g., 'GC' instead of [['G','C'],['C','G']].",
+    "infra_failure_count": 0,
+    "infra_failure_rate": 0.0,
+    "sample_infra_errors": [],
+    "decision": "accepted",
+    "regression_before": {
+      "total": 48,
+      "exact_match_rate": 0.8125,
+      "function_match_rate": 1.0,
+      "argument_match_rate": 0.8125,
+      "order_match_rate": 1.0,
+      "json_valid_rate": 1.0,
+      "error_distribution": {
+        "argument_mismatch": 9
+      },
+      "total_latency_seconds": 123.5402,
+      "avg_latency_seconds": 2.5738,
+      "total_prompt_chars": 169305,
+      "avg_prompt_chars": 3527.19,
+      "total_raw_output_chars": 6210,
+      "avg_raw_output_chars": 129.38
+    },
+    "regression_after": {
+      "total": 48,
+      "exact_match_rate": 0.8542,
+      "function_match_rate": 1.0,
+      "argument_match_rate": 0.8542,
+      "order_match_rate": 1.0,
+      "json_valid_rate": 1.0,
+      "error_distribution": {
+        "argument_mismatch": 7
+      },
+      "total_latency_seconds": 154.907,
+      "avg_latency_seconds": 3.2272,
+      "total_prompt_chars": 377673,
+      "avg_prompt_chars": 7868.19,
+      "total_raw_output_chars": 6161,
+      "avg_raw_output_chars": 128.35
+    },
+    "regression_before_trace": "E:\\ai_project\\bfcl_agent_harness_demo_llm_reflector_dashboard\\bfcl_agent_harness_demo\\runs\\latest\\traces\\iteration_00_regression_baseline.json",
+    "regression_after_trace": "E:\\ai_project\\bfcl_agent_harness_demo_llm_reflector_dashboard\\bfcl_agent_harness_demo\\runs\\latest\\traces\\iteration_00_regression_candidate.json",
+    "before_exact_match_rate": 0.8125,
+    "after_exact_match_rate": 0.8542,
+    "deployed_exact_match_rate": 0.8542,
+    "improvement": 0.0417,
+    "regression_drop": 0.0,
+    "regression_diff": {
+      "improved_count": 3,
+      "regressed_count": 1,
+      "changed_count": 4,
+      "improved_examples": [
+        {
+          "id": "multiple_33",
+          "user_query": "Find the integral of the function f(x) = 3x^2 from 1 to 2.",
+          "gold_calls": [
+            {
+              "name": "calculate_integral",
+              "arguments": {
+                "func": [
+                  "3x**2",
+                  "lambda x: 3x**2"
+                ],
+                "a": [
+                  1
+                ],
+                "b": [
+                  2
+                ]
+              }
+            }
+          ],
+          "before_predicted_calls": [
+            {
+              "name": "calculate_integral",
+              "arguments": {
+                "func": "3*x**2",
+                "a": 1,
+                "b": 2
+              }
+            }
+          ],
+          "after_predicted_calls": [
+            {
+              "name": "calculate_integral",
+              "arguments": {
+                "func": "3x**2",
+                "a": 1,
+                "b": 2
+              }
+            }
+          ],
+          "before_errors": [
+            "argument_mismatch"
+          ],
+          "after_errors": []
+        },
+        {
+          "id": "multiple_71",
+          "user_query": "How many veterans were there in the United States in the year 1954?",
+          "gold_calls": [
+            {
+              "name": "get_population",
+              "arguments": {
+                "year": [
+                  1954
+                ],
+                "category": [
+                  "veterans"
+                ]
+              }
+            }
+          ],
+          "before_predicted_calls": [
+            {
+              "name": "get_population",
+              "arguments": {
+                "year": "1954",
+                "category": "veterans"
+              }
+            }
+          ],
+          "after_predicted_calls": [
+            {
+              "name": "get_population",
+              "arguments": {
+                "year": 1954,
+                "category": "veterans"
+              }
+            }
+          ],
+          "before_errors": [
+            "argument_mismatch"
+          ],
+          "after_errors": []
+        },
+        {
+          "id": "multiple_72",
+          "user_query": "What was the population of California in 1970?",
+          "gold_calls": [
+            {
+              "name": "us_history.population_by_state_year",
+              "arguments": {
+                "state": [
+                  "California",
+                  "CA"
+                ],
+                "year": [
+                  1970
+                ]
+              }
+            }
+          ],
+          "before_predicted_calls": [
+            {
+              "name": "us_history.population_by_state_year",
+              "arguments": {
+                "state": "California",
+                "year": "1970"
+              }
+            }
+          ],
+          "after_predicted_calls": [
+            {
+              "name": "us_history.population_by_state_year",
+              "arguments": {
+                "state": "California",
+                "year": 1970
+              }
+            }
+          ],
+          "before_errors": [
+            "argument_mismatch"
+          ],
+          "after_errors": []
+        }
+      ],
+      "regressed_examples": [
+        {
+          "id": "multiple_58",
+          "user_query": "Search for divorce law specialists in Los Angeles",
+          "gold_calls": [
+            {
+              "name": "lawyer.search",
+              "arguments": {
+                "location": [
+                  "Los Angeles",
+                  "Los Angeles, CA",
+                  "LA"
+                ],
+                "expertise": [
+                  "Divorce"
+                ]
+              }
+            }
+          ],
+          "before_predicted_calls": [
+            {
+              "name": "lawyer.search",
+              "arguments": {
+                "location": "Los Angeles",
+                "expertise": "Divorce"
+              }
+            }
+          ],
+          "after_predicted_calls": [
+            {
+              "name": "lawyer.search",
+              "arguments": {
+                "location": "Los Angeles",
+                "expertise": "divorce law"
+              }
+            }
+          ],
+          "before_errors": [],
+          "after_errors": [
+            "argument_mismatch"
+          ]
+        }
+      ],
+      "changed_examples": [
+        {
+          "id": "multiple_33",
+          "user_query": "Find the integral of the function f(x) = 3x^2 from 1 to 2.",
+          "gold_calls": [
+            {
+              "name": "calculate_integral",
+              "arguments": {
+                "func": [
+                  "3x**2",
+                  "lambda x: 3x**2"
+                ],
+                "a": [
+                  1
+                ],
+                "b": [
+                  2
+                ]
+              }
+            }
+          ],
+          "before_predicted_calls": [
+            {
+              "name": "calculate_integral",
+              "arguments": {
+                "func": "3*x**2",
+                "a": 1,
+                "b": 2
+              }
+            }
+          ],
+          "after_predicted_calls": [
+            {
+              "name": "calculate_integral",
+              "arguments": {
+                "func": "3x**2",
+                "a": 1,
+                "b": 2
+              }
+            }
+          ],
+          "before_errors": [
+            "argument_mismatch"
+          ],
+          "after_errors": []
+        },
+        {
+          "id": "multiple_58",
+          "user_query": "Search for divorce law specialists in Los Angeles",
+          "gold_calls": [
+            {
+              "name": "lawyer.search",
+              "arguments": {
+                "location": [
+                  "Los Angeles",
+                  "Los Angeles, CA",
+                  "LA"
+                ],
+                "expertise": [
+                  "Divorce"
+                ]
+              }
+            }
+          ],
+          "before_predicted_calls": [
+            {
+              "name": "lawyer.search",
+              "arguments": {
+                "location": "Los Angeles",
+                "expertise": "Divorce"
+              }
+            }
+          ],
+          "after_predicted_calls": [
+            {
+              "name": "lawyer.search",
+              "arguments": {
+                "location": "Los Angeles",
+                "expertise": "divorce law"
+              }
+            }
+          ],
+          "before_errors": [],
+          "after_errors": [
+            "argument_mismatch"
+          ]
+        },
+        {
+          "id": "multiple_71",
+          "user_query": "How many veterans were there in the United States in the year 1954?",
+          "gold_calls": [
+            {
+              "name": "get_population",
+              "arguments": {
+                "year": [
+                  1954
+                ],
+                "category": [
+                  "veterans"
+                ]
+              }
+            }
+          ],
+          "before_predicted_calls": [
+            {
+              "name": "get_population",
+              "arguments": {
+                "year": "1954",
+                "category": "veterans"
+              }
+            }
+          ],
+          "after_predicted_calls": [
+            {
+              "name": "get_population",
+              "arguments": {
+                "year": 1954,
+                "category": "veterans"
+              }
+            }
+          ],
+          "before_errors": [
+            "argument_mismatch"
+          ],
+          "after_errors": []
+        },
+        {
+          "id": "multiple_72",
+          "user_query": "What was the population of California in 1970?",
+          "gold_calls": [
+            {
+              "name": "us_history.population_by_state_year",
+              "arguments": {
+                "state": [
+                  "California",
+                  "CA"
+                ],
+                "year": [
+                  1970
+                ]
+              }
+            }
+          ],
+          "before_predicted_calls": [
+            {
+              "name": "us_history.population_by_state_year",
+              "arguments": {
+                "state": "California",
+                "year": "1970"
+              }
+            }
+          ],
+          "after_predicted_calls": [
+            {
+              "name": "us_history.population_by_state_year",
+              "arguments": {
+                "state": "California",
+                "year": 1970
+              }
+            }
+          ],
+          "before_errors": [
+            "argument_mismatch"
+          ],
+          "after_errors": []
+        }
+      ]
+    }
+  }
+}

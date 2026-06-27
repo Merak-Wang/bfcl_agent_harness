@@ -1,0 +1,2 @@
+{"user_query":"What is the weather in Shanghai tomorrow?","calls":[{"name":"get_weather","arguments":{"city":"Shanghai","date":"tomorrow"}}],"note":"Weather questions should call get_weather, not search_web."}
+{"user_query":"Translate 'hello' into Chinese.","calls":[{"name":"translate_text","arguments":{"text":"hello","target_language":"Chinese"}}],"note":"Translation questions should call translate_text."}
