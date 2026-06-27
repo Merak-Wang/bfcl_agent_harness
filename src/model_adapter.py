@@ -1,11 +1,9 @@
 """模型适配器。
 
-本文件提供两种模型后端：
+提供两种模型后端：
 
-1. RuleBasedAdapter：离线且确定性，适合稳定 demo。
+1. RuleBasedAdapter：离线且确定性的规则模型，适用于演示和调试。
 2. OpenAICompatibleAdapter：调用任何兼容 /chat/completions 的模型 API。
-
-真实的 API 密钥绝不可硬编码，它们应从环境变量中读取。
 """
 
 from __future__ import annotations
@@ -44,7 +42,6 @@ def _json_calls_to_objects(raw: str) -> tuple[list[FunctionCall], str | None]:
 
     直接 json.loads(raw) 会把这些本可正确的输出标记为 json_invalid。
     因此解析器会先剥离 Markdown 围栏，再提取第一个 JSON 数组。
-    这是 Harness 层面的鲁棒性处理，而非模型训练。
     """
 
     candidate = _extract_json_array(raw)
@@ -77,10 +74,9 @@ def _extract_json_array(raw: str) -> str:
 
 
 class RuleBasedAdapter(ModelAdapter):
-    """确定性 demo 模型。
+    """规则模型。
 
     它表现得像一个较弱的函数调用模型，其行为可以通过 Skill 规则改进。
-    当你需要演示 Harness 而无需支付 API 费用或依赖网络稳定性时，这会很有用。
     """
 
     CONTACTS = {
@@ -125,8 +121,6 @@ class RuleBasedAdapter(ModelAdapter):
             percent = self._percent(q)
             if knows_discount and "calculate_discount" in names:
                 return [FunctionCall("calculate_discount", {"price": price, "discount_percent": percent})]
-            # 初始弱点：使用通用 calculator 调用在数学上是正确的，
-            # 但无法通过 BFCL 的精确函数匹配。
             return [FunctionCall("calculator", {"expression": f"{price}*(1-{percent}/100)"})]
 
         if ("email" in q or "send" in q) and "send_email" in names:
@@ -137,7 +131,6 @@ class RuleBasedAdapter(ModelAdapter):
                     FunctionCall("get_contact", {"name": person.title()}),
                     FunctionCall("send_email", {"to": self.CONTACTS.get(person, f"{person}@example.com"), "body": body}),
                 ]
-            # 初始弱点：用联系人姓名代替了工具期望的邮箱地址。
             return [FunctionCall("send_email", {"to": person.title() if person else "unknown", "body": body})]
 
         if ("book" in q or "meeting" in q) and "create_calendar_event" in names:
