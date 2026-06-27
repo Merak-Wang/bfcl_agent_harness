@@ -207,6 +207,7 @@ def load_trace_records(trace_path: str | None) -> pd.DataFrame:
 st.set_page_config(page_title="Agent Harness Dashboard", layout="wide")
 st.title("Agent Dashboard")
 st.caption("Read-only view of saved runs. Run experiments with `run_demo.py`; use this page for presentation.")
+st.caption("访问 https://gorilla.cs.berkeley.edu/blogs/8_berkeley_function_calling_leaderboard.html 了解更多关于 BFCLv3 的信息。")
 
 run_dirs = find_run_dirs()
 if not run_dirs:
